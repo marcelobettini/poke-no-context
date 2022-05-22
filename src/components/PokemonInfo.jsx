@@ -1,6 +1,7 @@
 //recibe el nombre (versión english) y el objeto base, que tiene los atributos de pelea
 //si pasamos name, luego el <h2> es name.english
 
+
 const PokemonInfo = ({ name: { english }, base }) => (
     <div>
         <h2>{english}</h2>
@@ -10,7 +11,7 @@ const PokemonInfo = ({ name: { english }, base }) => (
                 {Object.keys(base).map((key) => (
                     <tr key={key}>
                         <td>{key}:</td>
-                        <td>{base[key]}</td>
+                        <td>{base.key}</td>
                     </tr>
                 ))}
             </tbody>
