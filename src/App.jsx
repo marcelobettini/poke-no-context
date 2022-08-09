@@ -8,23 +8,34 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState([])
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
 
-  function handleErrors(res) {
-    if (!res.ok) throw Error(res.status)
-    return res.json();
-  }
+
+  //Fetch alternatives: probar bad request con puerto y nombre de archivo
+  // function handleErrors(res) {
+  //   if (!res.ok) throw Error(res.message)
+  //   return res.json();
+  // }
 
   //con Vite basta con poner el archivo en la carpeta exterior, con webpack habría que incluirla en la carpeta public
   useEffect(() => {
-    fetch("http://localhost:3001/pokemon.json")
-      .then(res => handleErrors(res))
-      .then(data => setData(data))
-      .catch(error => console.log(error))
+    fetch("http://localhost:3000/pokemon.json")
+    .then(res => res.json(), 
+      (error) => setError(error)
+    )
+    .catch(error => setError(error))
+    .then(data => setData(data))
+      // .then(res => handleErrors(res))
+      // .then(data => setData(data))
+      // .catch(error => setError(error))
+      .finally(()=> setLoading(false))
   }, [])
+{if(loading) return <div>fetching...</div>}
 
-
+{if(error) return <div>{error.message}</div>}
   return (
     <div
       style={{

@@ -11,8 +11,7 @@ const PokemonTable = ({ data, filter, setSelectedPokemon }) => {
                 <TableHead>
                     <TableRow>
                         <TableCell >Name</TableCell>
-                        <TableCell >Type</TableCell>
-                        <TableCell align="center">Action</TableCell>
+                        <TableCell >Type</TableCell>                        
                     </TableRow>
                 </TableHead>
                 <TableBody>
