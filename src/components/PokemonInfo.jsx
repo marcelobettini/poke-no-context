@@ -11,7 +11,7 @@ const PokemonInfo = ({ name: { english }, base }) => (
                 {Object.keys(base).map((key) => (
                     <tr key={key}>
                         <td>{key}:</td>
-                        <td>{base.key}</td>
+                        <td>{base[key]}</td>
                     </tr>
                 ))}
             </tbody>
